@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import requests
 from config import BASE_URL, LOGIN, PASSWORD
 
@@ -9,7 +10,13 @@ def browser():
     """
     открывает главную страницу
     """
-    chrome_browser = webdriver.Chrome()
+    options = Options()
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    
+    chrome_browser = webdriver.Chrome(options=options)
     chrome_browser.implicitly_wait(10)
     chrome_browser.get(BASE_URL)
     yield chrome_browser
@@ -41,7 +48,13 @@ def authentication(login_session):
     обновляет куки при открытии страницы
     после обновления страницы, пользователь авторизирован
     """
-    chrome_browser = webdriver.Chrome()
+    options = Options()
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+
+    chrome_browser = webdriver.Chrome(options=options)
     chrome_browser.implicitly_wait(10)
     chrome_browser.get(BASE_URL)
     chrome_browser.delete_all_cookies()

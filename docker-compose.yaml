@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  tests_shop:
+    build: .
+    image: tests_shop
+    container_name: pytest_runner
+    env_file:
+      - .env
+   # volumes:
+   #   - .:/app/
