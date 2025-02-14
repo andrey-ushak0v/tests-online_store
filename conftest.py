@@ -13,9 +13,6 @@ def browser():
     options = Options()
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
-    
     chrome_browser = webdriver.Chrome(options=options)
     chrome_browser.implicitly_wait(10)
     chrome_browser.get(BASE_URL)
@@ -51,9 +48,6 @@ def authentication(login_session):
     options = Options()
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
-
     chrome_browser = webdriver.Chrome(options=options)
     chrome_browser.implicitly_wait(10)
     chrome_browser.get(BASE_URL)
@@ -62,8 +56,8 @@ def authentication(login_session):
         cookie_data = {
             "name": cookie.name,
             "value": cookie.value,
-            "domain": cookie.domain if cookie.domain else "mega.readyscript.ru",
-            "path": cookie.path if cookie.path else "/"
+            "domain": cookie.domain,
+            "path": cookie.path
         }
 
         chrome_browser.add_cookie(cookie_data)

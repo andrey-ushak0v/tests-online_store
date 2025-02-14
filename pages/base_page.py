@@ -22,8 +22,6 @@ class BasePage:
 
     def click_button(self, locator):
         """кликает по кнопке"""
-        #button = WebDriverWait(self.driver, 10).until(
-        #    EC.element_to_be_clickable((By.XPATH, locator)))
         button = self.find_element_on_page_by_xpath(locator)
         self.driver.execute_script("arguments[0].click();", button)
 
@@ -41,7 +39,3 @@ class BasePage:
     def get_element_text(self, locator):
         """получает текст из элемента"""
         return self.find_element_on_page_by_xpath(locator).text
-        
-
-    
-

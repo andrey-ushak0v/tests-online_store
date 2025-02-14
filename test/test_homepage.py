@@ -1,6 +1,6 @@
 import pytest
-from pages.base_actions import BasePage
-from locators import locators
+from pages.base_page import BasePage
+from locators.homepage_locators import HomePageLocators
 
 
 class TestHomepage:
@@ -20,9 +20,9 @@ class TestHomepage:
         4) кликнуть по бренду "Digma"
         5) проверить что нужный элемент отображается
         """
-        self.app.click_button(locators.catalog_button)
-        self.app.move_mouse_to_element(locators.electronic_category)
-        self.app.move_mouse_to_element(locators.planshety_categoty)
-        self.app.click_button(locators.digma_category)
-        assert self.app.find_element_on_page_by_xpath(locators.planshet),'товар не отображается'
-
+        self.app.click_button(HomePageLocators.catalog_button)
+        self.app.move_mouse_to_element(HomePageLocators.electronic_category)
+        self.app.move_mouse_to_element(HomePageLocators.planshety_categoty)
+        self.app.click_button(HomePageLocators.digma_category)
+        assert self.app.find_element_on_page_by_xpath(
+            HomePageLocators.planshet), 'товар не отображается'

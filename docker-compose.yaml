@@ -7,5 +7,5 @@ services:
     container_name: pytest_runner
     env_file:
       - .env
-   # volumes:
-   #   - .:/app/
+    volumes:
+      - .:/app/
