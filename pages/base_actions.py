@@ -32,7 +32,7 @@ class BasePage:
         field.clear()
         field.send_keys(text)
 
-    def move_mouse_to_elemet(self, locator):
+    def move_mouse_to_element(self, locator):
         """наводит мышь на элемент"""
         elem = self.find_element_on_page_by_xpath(locator, timeout=10)
         self.actions.move_to_element(elem).perform()
